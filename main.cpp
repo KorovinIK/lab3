@@ -9,6 +9,8 @@ const auto TEXT_BASELINE = 20;
 const auto TEXT_WIDTH = 50;
 const auto BIN_HEIGHT = 30;
 const auto BLOCK_WIDTH = 10;
+const auto RECT_STROKE = "red";
+const auto RECT_FILL = "#ffcccc";
 
 vector<double> input_numbers(size_t count) {
     vector<double> result(count);
@@ -105,10 +107,11 @@ void svg_text(double left, double baseline, string text)
 {
 cout << "<text x='" << left << "' y='" << baseline << "'>" << text << "</text>";
 }
-void svg_rect(double x, double y, double width, double height)
+void svg_rect(double x, double y, double width, double height, string stroke, string fill)
 {
     cout << "<rect x='" << x << "' y='" << y
-        << "' width='" << width << "' height='" << height << "'/>\n";
+        << "' width='" << width << "' height='" << height
+        << "' stroke='" << stroke << "' fill='" << fill << "'/>\n";
 }
 
 void svg_end() {
@@ -121,7 +124,7 @@ void show_histogramm_svg(const vector<size_t>& bins) {
     for (size_t bin : bins) {
         const double bin_width = BLOCK_WIDTH * bin;
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
-        svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT);
+        svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT, RECT_STROKE, RECT_FILL);
         top += BIN_HEIGHT;
     }
     svg_end();
