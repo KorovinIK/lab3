@@ -25,7 +25,7 @@ vector<size_t> make_histogramm(const vector<double>& numbers, size_t bin_count){
     find_minmax(numbers, min, max);
     vector<size_t> bins(bin_count,0);
     double bin_size = (max-min)/bin_count;
-    for (size_t i=0;i<number_count;i++)
+    for (size_t i=0;i<numbers.size();i++)
     {
         bool found = false;
         for (size_t j=0;j<(bin_count - 1) && !found;j++)
@@ -46,38 +46,42 @@ vector<size_t> make_histogramm(const vector<double>& numbers, size_t bin_count){
 }
 
 void show_histogramm_text(const vector<size_t>& bins){
-    const size_t SCREEN_WIDTH = 80;
-    const size_t MAX_ASTERISK = SCREEN_WIDTH - 3 - 1;
+    size_t SCREEN_WIDTH = 80;
+    const size_t max_asterix = SCREEN_WIDTH - 3 - 1;
+
     size_t max_bin = bins[0];
-    for (size_t bin : bins){
-        if (max_bin < bin){
-            max_bin = bin;}
-    }
-    bool prov = false;
-    if (max_bin > MAX_ASTERISK){
-        prov = true;
-    }
-    vector<size_t> binsh(bin_count,0);
-    for(size_t i=0; i<bin_count; i++ ){
-        size_t height = bins[i];
-        if (prov == true){
-            height = MAX_ASTERISK * (static_cast<double>(bins[i]) / max_bin);
-            binsh[i] = height;
-        }
-        else{
-            binsh[i] = bins[i];
+    for (size_t bin: bins)
+    {
+        if (max_bin < bin)
+        {
+            max_bin = bin;
         }
     }
-    for(size_t i=0; i<bin_count; i++ ){
-        if (bins[i] < 100){
-            cout << ' ';}
-        if (bins[i] < 10){
-            cout << ' ';}
-	    cout << bins[i] << "|";
-        for (size_t j=0; j<binsh[i]; j++){
-            cout  << "*";
+
+    for(size_t bin: bins)
+    {
+    size_t height = bin;
+
+    //Проверка, нужно ли масштабировать столбцы
+    if (max_bin > max_asterix)
+    {
+        height = max_asterix * (static_cast<double>(bin) / max_bin);
+    }
+
+    if (bin < 100)
+    {
+        cout << ' ';
+    }
+    if (bin < 10)
+    {
+        cout << ' ';
+    }
+    cout << bin << "|";
+        for (size_t i = 0; i < height; i++)
+        {
+            cout << "*";
         }
-        cout << endl;
+    cout << endl;
     }
 }
 
@@ -93,8 +97,8 @@ int main()
     cerr << "Enter bin count ";
     cin >> bin_count;
     //расчет гистограммы
-    const auto bins = make_histogram(numbers, bin_count);
+    const auto bins = make_histogramm(numbers, bin_count);
     //вывод гистограммы
-    show_histogram_text(bins);
+    show_histogramm_text(bins);
     return 0;
 }
