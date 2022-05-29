@@ -10,7 +10,16 @@ vector<double> input_numbers(size_t count) {
     }
     return result;
 }
-
+void find_minmax(vector<double> numbers, double& min, double& max) {
+    min = numbers[0];
+    max = numbers[0];
+    for (double number : numbers){
+        if (min > number){
+            min = number;}
+        if (max < number){
+            max = number;}
+    }
+}
 int main()
 {
     //ввод
@@ -23,14 +32,8 @@ int main()
     cerr << "Enter bin count ";
     cin >> bin_count;
     //расчет гистограммы
-    double min = numbers[0];
-    double max = numbers[0];
-    for (double number : numbers){
-        if (min > number){
-            min = number;}
-        if (max < number){
-            max = number;}
-    }
+    double min, max;
+    find_minmax(numbers, min, max);
     vector<size_t> bins(bin_count,0);
     double bin_size = (max-min)/bin_count;
     for (size_t i=0;i<number_count;i++)
