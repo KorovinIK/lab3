@@ -98,6 +98,11 @@ void svg_end() {
     cout << "</svg>\n";
 }
 
+void show_histogram_svg(const vector<size_t>& bins) {
+    svg_begin(400, 300);
+    svg_end();
+}
+
 int main()
 {
     //ввод
