@@ -18,8 +18,6 @@ int main()
     cerr << "Enter number count ";
     cin >> number_count;
 
-    vector<double> numbers(number_count);
-    cerr << "Enter numbers ";
     vector<double> numbers = input_numbers(number_count);
     size_t bin_count;
     cerr << "Enter bin count ";
