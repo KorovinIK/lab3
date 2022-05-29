@@ -75,10 +75,7 @@ void show_histogramm_text(const vector<size_t>& bins){
             cout << ' ';}
 	    cout << bins[i] << "|";
         for (size_t j=0; j<binsh[i]; j++){
-            if((j == binsh[i-1]-1) && (binsh[i-1] != binsh[i+1])   ){cout << "^";}
-            else if((j == binsh[i+1]-1) && (binsh[i-1] != binsh[i+1])   ){cout << "v";}
-            else if((j == binsh[i+1]-1) && (binsh[i-1] == binsh[i+1])   ){cout << "N";}
-            else{cout  << "*";}
+            cout  << "*";
         }
         cout << endl;
     }
