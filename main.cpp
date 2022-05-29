@@ -105,6 +105,7 @@ void svg_end() {
 
 void show_histogramm_svg(const vector<size_t>& bins) {
     svg_begin(400, 300);
+    svg_text(20, 20, to_string(bins[0]));
     svg_end();
 }
 
