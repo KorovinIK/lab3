@@ -20,9 +20,7 @@ int main()
 
     vector<double> numbers(number_count);
     cerr << "Enter numbers ";
-    for (size_t i=0;i<number_count;i++){
-        cin >> numbers[i];
-    }
+    vector<double> numbers = input_numbers(number_count);
     size_t bin_count;
     cerr << "Enter bin count ";
     cin >> bin_count;
