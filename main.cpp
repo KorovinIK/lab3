@@ -2,7 +2,9 @@
 #include <vector>
 using namespace std;
 
-const auto IMAGE_WIDTH = 400;
+const auto MIN_IMAGE_WIDTH = 3px;
+const auto MAX_IMAGE_WIDTH = 30px;
+//const auto IMAGE_WIDTH = 400;
 const auto IMAGE_HEIGHT = 300;
 const auto TEXT_LEFT = 20;
 const auto TEXT_BASELINE = 20;
