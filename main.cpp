@@ -159,6 +159,6 @@ int main()
     //расчет гистограммы
     const auto bins = make_histogramm(numbers, bin_count);
     //вывод гистограммы
-    show_histogramm_svg(bins);
+    show_histogramm_svg(bins, image_width);
     return 0;
 }
